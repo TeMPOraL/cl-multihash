@@ -40,12 +40,19 @@
 ;;; 3. changing a number has to happen in two places.
 (defparameter *definition-list*
   ;;; name function-code length
-  '((:sha1 #x11 20)
-    (:sha256 #x12 32)
-    (:sha512 #x13 64)
-    (:sha3 #x14 64)
-    (:blake2b #x40 64)
-    (:blake2s #x41 32)))
+  '((:md4 #xd4 16)
+    (:md5 #xd5 16)
+    (:sha1 #x11 20)
+    (:sha256 #x12 32)                   ;sha2-256
+    (:sha512 #x13 64)                   ;sha2-512
+    (:sha3/224 #x17 28)
+    (:sha3/256 #x16 32)
+    (:sha3/384 #x15 48)
+    (:sha3 #x14 64)                     ;sha3-512
+    ;; TODO Needs definition and encoding to be updated to use varints.
+    ;; (:blake2b #xb240 64)
+    ;; (:blake2s #xb260 32)
+    ))
 
 ;;; *DEFINITIONS* is a list of all known multihash definitions
 ;;; It is used for all lookup purposes
